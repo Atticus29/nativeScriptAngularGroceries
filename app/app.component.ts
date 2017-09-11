@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
   <StackLayout>
     <Image src = "res://logo_login" stretch = "none" horizontalAlignment = "center"></Image>
     <TextField hint = "Email Address" keyboardType = "email"
-    autocorrect = "false" autocapitalizationType = "none" [text]="email"></TextField>
+    autocorrect = "false" autocapitalizationType = "none" [(ngModel)]="email"></TextField>
     <TextField hint = "Password" secure = "true"></TextField>
 
     <Button text="Sign in" class="submit-button" (tap) = "submit()"></Button>
