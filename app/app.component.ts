@@ -1,27 +1,38 @@
 import { Component } from "@angular/core";
+import { User } from "./shared/user/user";
+import { UserService } from "./shared/user/user.service";
 
 @Component({
   selector: "my-app",
-  template: `
-  <StackLayout>
-    <Image src = "res://logo_login" stretch = "none" horizontalAlignment = "center"></Image>
-    <TextField hint = "Email Address" keyboardType = "email"
-    autocorrect = "false" autocapitalizationType = "none" [(ngModel)]="email"></TextField>
-    <TextField hint = "Password" secure = "true"></TextField>
-
-    <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'" class="submit-button" (tap) = "submit()"></Button>
-    <Button [text] = "isLoggingIn ? 'Sign up' : 'Back to login'" (tap)="toggleDisplay()"></Button>
-  </StackLayout>
-  `,
+  providers: [UserService],
+  templateUrl: "pages/login/login.html",
   styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
 })
 
 export class AppComponent {
-  email = "nativescriptrocks@telerik.com";
+  user: User;
   isLoggingIn = true;
+  // email = "nativescriptrocks@telerik.com";
+  constructor(private userService: UserService){
+    this.user = new User();
+  }
+
   submit(){
+    if(this.isLoggingIn){
+      this.login();
+    } else {
+      this.signUp();
+    }
     // console.log(`hello ${new Date()}`);
     alert("You're using: " + this.email);
+  }
+
+  login(){
+    //TODO: Define
+  }
+
+  signUp(){
+    this.userService.register(this.user);
   }
 
   toggleDisplay(){
