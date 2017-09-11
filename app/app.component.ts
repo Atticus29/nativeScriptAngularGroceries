@@ -24,7 +24,7 @@ export class AppComponent {
       this.signUp();
     }
     // console.log(`hello ${new Date()}`);
-    alert("You're using: " + this.email);
+    // alert("You're using: " + this.email);
   }
 
   login(){
@@ -32,7 +32,14 @@ export class AppComponent {
   }
 
   signUp(){
-    this.userService.register(this.user);
+    this.userService.register(this.user)
+    .subscribe(
+      () => {
+        alert("Your account was successfully created.");
+        this.toggleDisplay();
+      },
+      () => alert("Unfortunately, we were unable to create your account.")
+    );
   }
 
   toggleDisplay(){
