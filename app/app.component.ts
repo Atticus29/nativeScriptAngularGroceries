@@ -9,8 +9,8 @@ import { Component } from "@angular/core";
     autocorrect = "false" autocapitalizationType = "none" [(ngModel)]="email"></TextField>
     <TextField hint = "Password" secure = "true"></TextField>
 
-    <Button text="Sign in" class="submit-button" (tap) = "submit()"></Button>
-    <Button text = "Sign up for Groceries"></Button>
+    <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'" class="submit-button" (tap) = "submit()"></Button>
+    <Button [text] = "isLoggingIn ? 'Sign up' : 'Back to login'" (tap)="toggleDisplay()"></Button>
   </StackLayout>
   `,
   styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
@@ -18,8 +18,13 @@ import { Component } from "@angular/core";
 
 export class AppComponent {
   email = "nativescriptrocks@telerik.com";
+  isLoggingIn = true;
   submit(){
     // console.log(`hello ${new Date()}`);
     alert("You're using: " + this.email);
+  }
+
+  toggleDisplay(){
+    this.isLoggingIn = !this.isLoggingIn;
   }
 }
