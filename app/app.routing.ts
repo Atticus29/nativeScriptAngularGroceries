@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { LoginComponent } from "./pages/login/login.component";
+import { ListComponent } from "./pages/list/list.component";
 
 @Component({
   selector: "main",
@@ -9,9 +10,11 @@ export class AppComponent{}
 
 export const routes = [
   { path: "",
-component: LoginComponent }
+component: LoginComponent },
+{ path: "list", component: ListComponent }
 ];
 
 export const navigatableComponents = [
-  LoginComponent
+  LoginComponent,
+  ListComponent
 ];
