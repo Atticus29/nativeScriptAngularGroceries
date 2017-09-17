@@ -7,7 +7,7 @@ declare var NSForegroundColorAttributeName: any;
 
 export function setHintColor(args: { view: TextField, color: Color }) {
   if(args.view.android) {
-    args.view.android.setHintTextColor(arg.color.android);
+    args.view.android.setHintTextColor(args.color.android);
   }
   if(args.view.ios){
     let dictionary = new NSDictionary(
